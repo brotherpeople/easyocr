@@ -1,0 +1,20 @@
+# .gitignore for AI-ErgoCheck
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+
+# Streamlit & Temp files
+.streamlit/
+temp_hmi.png
+*.jpg
+*.png
+*.jpeg
+
+# OS
+.DS_Store
+Thumbs.db
