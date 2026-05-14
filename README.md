@@ -1,54 +1,33 @@
 # AI-ErgoCheck: Intelligent HMI Readability Audit System
 
-AI-ErgoCheck is an automated tool designed to verify the readability of Human-Machine Interface (HMI) designs based on international ergonomic standards like **ISO 15008**.
+AI-ErgoCheck is an automated tool designed to verify the readability of Human-Machine Interface (HMI) designs based on the **ISO 15008** international ergonomic standard. It utilizes AI and Computer Vision to provide quantitative assessments of text size and contrast.
 
 ---
 
-## 1. Problem Statement
+## Key Features
 
-### Limitations of Traditional Methods
-- **Subjective Evaluation:** HMI readability is often judged subjectively by designers, leading to inconsistent quality.
-- **Complexity of Standards:** Manually calculating ergonomic values (contrast ratios, visual angles) from ISO 15008 is time-consuming and prone to human error.
-- **Delayed Feedback:** Issues are often discovered late in the production phase, making them expensive to fix.
+- **Automated Text Audit:** Uses `EasyOCR` to detect and extract text from design images.
+- **Min-Max Contrast Analysis:** Calculates the luminance contrast ratio between text and background within the ROI.
+- **Ergonomic Size Validation:** Converts pixel dimensions into visual angles (Arcminutes) based on display DPI and viewing distance.
+- **Environment Presets:** Optimized presets for Automotive, Mobile, Tablet, Monitor, and Marine environments.
+- **Visual Feedback:** Provides an annotated overlay with color-coded bounding boxes (Green: Pass / Red: Fail).
 
-### Our Solution
-- **AI-Powered Automation:** Combines OCR and Computer Vision to quantitatively analyze text and graphical elements in design images.
-- **Standard-as-Code:** Algorithms based on ISO 15008 provide instant 'Pass/Fail' feedback and actionable insights.
+## Technical Implementation
 
----
+### 1. Contrast Analysis
+The system identifies the darkest and brightest pixels within each text bounding box to calculate a true luminance ratio, preventing color dilution common in simple mean-average methods.
 
-## 2. Development Process
+### 2. Physical Scale Mapping
+To solve the problem of relative pixel sizing, the tool maps image resolution to physical dimensions using DPI settings and calculates the actual visual angle subtended at the observer's eye.
 
-### Step 1: Technical Stack & Architecture
-- **OCR Engine:** `EasyOCR` for high-accuracy multi-language text extraction.
-- **Image Processing:** `OpenCV` for ROI analysis and min-max luminance detection.
-- **UI Framework:** `Streamlit` for an interactive, web-based audit dashboard.
-- **Ergonomics Logic:** Custom Python modules implementing physical dimension to visual angle (Arcminute) conversions.
-
-### Step 2: Core AI Integration
-1. **Text Localization:** Detects and extracts text bounding boxes.
-2. **Min-Max Contrast Analysis:** Analyzes the luminance difference between text and background within the ROI to ensure readability.
-3. **Visual Angle Calculation:** Maps pixel height to physical size and calculates the visual angle (Arcmin) based on viewing distance presets.
-
-### Step 3: Human-Centered UX
-- Integrated environmental presets (Automotive, Mobile, Marine, etc.) to simplify complex ergonomic parameters for users without domain expertise.
+### 3. Compliance Checking
+Results are compared against ISO 15008 benchmarks:
+- **Minimum Contrast:** 3:1 or 4.5:1 depending on the environment.
+- **Minimum Character Height:** Typically 16' to 22' arcminutes based on usage context.
 
 ---
 
-## 3. Results & Portfolio Impact
-
-### Key Achievements
-- **Quantitative Data:** Provides objective metrics (e.g., "Contrast Ratio 5.2:1") instead of vague "looks good" judgments.
-- **Real-time Feedback:** Instantly identifies non-compliant elements with red bounding box overlays.
-
-### Professional Highlights (For Recruiters)
-- **Expertise in CV:** Demonstrated advanced use of Computer Vision beyond simple library calls (e.g., handling relative sizing via DPI/Distance mapping).
-- **Human-AI Collaboration:** Showcased the ability to use AI as a co-pilot to solve professional-grade ergonomic problems.
-- **Global Standard Compliance:** Focused on international industry standards (ISO 15008), proving industry readiness.
-
----
-
-## 4. How to Run
+## How to Run
 
 1. **Install Dependencies:**
    ```bash
@@ -59,3 +38,10 @@ AI-ErgoCheck is an automated tool designed to verify the readability of Human-Ma
    ```bash
    streamlit run app.py
    ```
+
+## Requirements
+- Python 3.8+
+- EasyOCR
+- OpenCV
+- Streamlit
+- NumPy
