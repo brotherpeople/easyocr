@@ -15,7 +15,9 @@ if 'contrast_analyzer' not in st.session_state:
 st.set_page_config(page_title="AI-ErgoCheck: HMI Readability Tool", layout="wide")
 
 st.title("🛡️ AI-ErgoCheck")
-st.markdown("### Intelligent HMI Readability Audit System based on [ISO 15008](https://www.iso.org/standard/70905.html)")
+st.markdown(
+    "### Intelligent HMI Readability Audit System based on [ISO 15008](https://www.iso.org/standard/62784.html)"
+)
 
 # Main Configuration Area (Integrated into main screen)
 st.divider()
