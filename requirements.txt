@@ -1,6 +1,9 @@
 easyocr
-opencv-python
+opencv-python-headless
 streamlit
-numpy
+numpy<2
 pandas
 Pillow
+gradio
+jinja2>=3.1.5
+
