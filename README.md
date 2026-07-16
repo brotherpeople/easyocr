@@ -1,15 +1,6 @@
----
-title: AI-ErgoCheck
-emoji: 🛡️
-colorFrom: blue
-colorTo: indigo
-sdk: gradio
-app_file: app.py
-pinned: false
----
-
 # AI-ErgoCheck: Intelligent HMI Readability Audit System
 
+👉 **[Try the Live Web Demo here!](https://huggingface.co/spaces/brotherpeople/ai-ergocheck)**
 
 AI-ErgoCheck is an automated tool designed to verify the readability of Human-Machine Interface (HMI) designs based on the **ISO 15008** international ergonomic standard. It utilizes AI and Computer Vision to provide quantitative assessments of text size and contrast.
 
@@ -38,28 +29,36 @@ Results are compared against ISO 15008 benchmarks:
 
 ---
 
-## How to Run
+## How to Run Locally
 
 1. **Install Dependencies:**
    ```bash
    pip install -r requirements.txt
    ```
 
-2. **Run the Application:**
+2. **Run the Gradio Web App (Recommended):**
    ```bash
-   streamlit run app.py
+   python app.py
    ```
+   Open `http://localhost:7860` in your web browser.
+
+3. **Run the Streamlit Version (Alternative):**
+   ```bash
+   streamlit run app_streamlit.py
+   ```
+   Open `http://localhost:8501` in your web browser.
 
 ## Requirements
-- Python 3.8+
+- Python 3.10+
 - EasyOCR
-- OpenCV
-- Streamlit
-- NumPy
+- OpenCV (headless)
+- Gradio (Default Web UI)
+- Streamlit (Alternative Local UI)
+- NumPy, Pandas, Pillow, Jinja2
 
 ---
 
-## 🚀 Deploying to Hugging Face Spaces (One-Click Web App)
+## Deploying to Hugging Face Spaces (One-Click Web App)
 
 You can host this tool online for free on Hugging Face Spaces so anyone can test it via a web browser without installing anything locally:
 
